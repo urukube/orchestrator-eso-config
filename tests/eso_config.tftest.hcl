@@ -6,8 +6,8 @@ run "creates_cluster_secret_store" {
   }
 
   assert {
-    condition     = kubectl_manifest.cluster_secret_store.kind == "ClusterSecretStore"
-    error_message = "Expected a ClusterSecretStore resource"
+    condition     = kubectl_manifest.cluster_secret_store.server_side_apply == true
+    error_message = "ClusterSecretStore must use server_side_apply"
   }
 }
 
