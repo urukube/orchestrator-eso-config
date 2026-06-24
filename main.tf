@@ -3,7 +3,7 @@ resource "kubectl_manifest" "cluster_secret_store" {
   wait              = true
 
   yaml_body = yamlencode({
-    apiVersion = "external-secrets.io/v1beta1"
+    apiVersion = "external-secrets.io/v1"
     kind       = "ClusterSecretStore"
     metadata = {
       name = "aws-secrets-manager"
@@ -33,7 +33,7 @@ resource "kubectl_manifest" "external_secret" {
   wait              = true
 
   yaml_body = yamlencode({
-    apiVersion = "external-secrets.io/v1beta1"
+    apiVersion = "external-secrets.io/v1"
     kind       = "ExternalSecret"
     metadata = {
       name      = each.key
